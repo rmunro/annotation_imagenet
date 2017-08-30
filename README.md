@@ -52,9 +52,13 @@ The output from the classifier looks like this:
 `[['030ae82b1f6feacc14d431248a627dc.jpg', 'packet', 0.66888225, [['packet', 0.66888225], ['matchstick', 0.098503083], ['carton', 0.067100592], ['pencil box, pencil case', 0.041079309], ['book jacket, dust cover, dust jacket, dust wrapper', 0.023718819]]],['03cd8b3b89027a1867bb05dc112b2c.jpg', 'vulture', 0.19094709, [['vulture', 0.19094709], ['wing', 0.1111501], ['warplane, military plane', 0.094249904], ['kite', 0.041520867], ['bald eagle, American eagle, Haliaeetus leucocephalus', 0.033858865]]],['05810e4e3535556aa3a7ea92b374e0.jpg', 'candle, taper, wax light', 0.079653569, [['candle, taper, wax light', 0.079653569], ['container ship, containership, container vessel', 0.057309043], ['wreck', 0.055132806], ['tow truck, tow car, wrecker', 0.038218945], ['spotlight, spot', 0.034531102]]],['06b4793e723e0ade7a5da13117e4b.jpg', 'organ, pipe organ', 0.13145885, [['organ, pipe organ', 0.13145885], ['wall clock', 0.11327242], ['nail', 0.096524686], ['screw', 0.055117268], ['face powder', 0.045105647]]]];`
 
 For each array element, it contains the following:
+
 (0) Name of the file. In the first entry above: '030ae82b1f6feacc14d431248a627dc.jpg'
+
 (1) The most confident label.  In the first entry above: 'packet'
+
 (2) The confidence of the label.  So, in the first entry above, the Machine Learning model was '0.66888225' confident that the image contains a 'packet'.
+
 (3) A list of the top 5 predictions for the image, as per the example above. So, in the first entry above, the Machine Learning algorithm was 66.9% confident that the image contained a packet, 9.9% confident that it contained  a matchstick, 6.7% confident that image contained a carton, etc. 
 
 
