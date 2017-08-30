@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Classify Image</title>
+
+   
+<script src="predictions.js">
+
+// loads the array of images, with their predicted labels according to a Machine Learning algorithm: in this case, it's the output of a tensorFlow model that predicts ImageNet labels.
+
+//The array looks like this:
+// var images = [['030ae82b1f6feacc14d431248a627dc.jpg', 'packet', 0.66888225, [['packet', 0.66888225], ['matchstick', 0.098503083], ['carton', 0.067100592], ['pencil box, pencil case', 0.041079309], ['book jacket, dust cover, dust jacket, dust wrapper', 0.023718819]]],['03cd8b3b89027a1867bb05dc112b2c.jpg', 'vulture', 0.19094709, [['vulture', 0.19094709], ['wing', 0.1111501], ['warplane, military plane', 0.094249904], ['kite', 0.041520867], ['bald eagle, American eagle, Haliaeetus leucocephalus', 0.033858865]]],['05810e4e3535556aa3a7ea92b374e0.jpg', 'candle, taper, wax light', 0.079653569, [['candle, taper, wax light', 0.079653569], ['container ship, containership, container vessel', 0.057309043], ['wreck', 0.055132806], ['tow truck, tow car, wrecker', 0.038218945], ['spotlight, spot', 0.034531102]]],['06b4793e723e0ade7a5da13117e4b.jpg', 'organ, pipe organ', 0.13145885, [['organ, pipe organ', 0.13145885], ['wall clock', 0.11327242], ['nail', 0.096524686], ['screw', 0.055117268], ['face powder', 0.045105647]]]];
+
+// For each array element, it contains the following:
+//    0. Name of the file. In the first entry above: '030ae82b1f6feacc14d431248a627dc.jpg'
+//    1. The most confident label.  In the first entry above: 'packet'
+//    2. The confidence of the label.  So, in the first entry above, the Machine Learning model was '0.66888225' confident that the image contains a 'packet'.
+//    3. A list of the top 5 predictions for the image. So, in the first entry above, the Machine Learning algorithm was 66.9% confident that the image contained a packet, 9.9% confident that it contained  a matchstick, 6.7% confident that image contained a carton, etc. 
+
+</script>    
+
+<script>
+
+
+
+
+var annotations = {};
+
+var current_image = -1;
+
+function update_image_question(image, label) {
+    document.getElementById('image_to_classify').src = 'test_images/'+image; 
+    document.getElementById('image_prediction').innerHTML = label;
+    document.getElementById('image_number').innerHTML = String(current_image);
+}
+
+// record annotation
+function annotate(annotation) {
+	if(annotation == 'yes'){	
+		annotations[images[current_image][0]] = images[current_image][1];
+	}
+	next_image();
+	display_results();
+}
+
+// load the next image in the array
+function next_image() {
+	if(current_image+1<images.length){
+		current_image++;	
+		image = images[current_image][0];
+		label = images[current_image][1];
+		update_image_question(image, label);		
+	}
+	else{
+		display_results();		
+	}
+}
+
+// display the results
+function display_results(){
+		document.getElementById('results').innerHTML = 'Results:<br>';
+		for(var image in annotations) {
+			var label = annotations[image];
+			document.getElementById('results').innerHTML += image;
+			document.getElementById('results').innerHTML += ': ';
+			document.getElementById('results').innerHTML += label;
+			document.getElementById('results').innerHTML += '<br>';
+		}
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+   next_image(); // load the first image
+}, false);
+
+</script>    
+      
+   </head>
+	
+<body>
+
+	<img src="" id="image_to_classify">
+	<br><span id="image_number"> </span>. Does the image above contain?: 
+	<span id="image_prediction"></span>
+	<p>
+	<button onclick="annotate('yes')">Yes</button> 
+	<button onclick="annotate('no')">No</button> 
+	<button onclick="annotate('uncertain')">Not Clear</button>
+	<p>
+	<div id="results"></div
+	
+
+ 
+      
+      
+
+</body>
+</html>
+
+
