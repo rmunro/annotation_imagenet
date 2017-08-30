@@ -68,7 +68,7 @@ Your exercise is to improve the code so that it allows a person to quickly and a
 
 You can keep the same input/output strategy that is already in the code. In the real-world, we would probably access the data and submit the results via an API. But here, it is ok to keep using the external `.js` file for input, and for the annotations to be appended to the bottom of page.
 
-The solution would be entirely in Javascript, and it is up to you how you structure the code and what framewords you want to use (jquery, react, angular, etc).
+The solution should be in Javascript, but it is up to you how you structure the code and what framewords you want to use (jquery, react, angular, etc).
 
 # Potential Solutions
  
