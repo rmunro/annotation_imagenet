@@ -9,10 +9,10 @@ The task is to fix this code.
 
 A company has approached you that wants to classify a large set of sports images according to the ImageNet set of labels. 
 
-They have run their images through a TensorFlow Machine Learning model that predicts the label for each image. 
+They have run their images through a TensorFlow Machine Learning model that predicts the ImageNet label for each image. 
 
 However, there are several problems:
- 1. They don't necessarily trust the predictions from the Machine Learning model, so they would like a human to review the output and confirm/reject the labels. 
+ 1. They don't necessarily trust the predictions from the Machine Learning model, so they would like a human to review the output and confirm/reject/fix the labels. 
  1. They have limited budget, so they would like to label them as efficiently as possible.
  1. Their collection of images may include some that are not related to sports. They want to make sure the sports images are filtered out, but they don't otherwise care about these images.
 
@@ -43,7 +43,7 @@ The starter code is in the same directory as this readme:
 
 `annotate_photos.html`
 
-The output from the classifier is in:
+The output from the classifier is also in this directory at: 
 
 `predictions.js`
 
@@ -59,14 +59,14 @@ For each array element, it contains the following:
 
 (2) The confidence of the label.  So, in the first entry above, the Machine Learning model was '0.66888225' confident that the image contains a 'packet'.
 
-(3) A list of the top 5 predictions for the image, as per the example above. So, in the first entry above, the Machine Learning algorithm was 66.9% confident that the image contained a packet, 9.9% confident that it contained  a matchstick, 6.7% confident that image contained a carton, etc. 
+(3) A list of the top 5 predictions for the image, as per the example above. So, in the first entry above, the Machine Learning algorithm was 66.9% confident that the image contained a packet, 9.9% confident that it contained a matchstick, 6.7% confident that the image contained a carton, etc. 
 
 
 # Exercise 
  
-Your exercise is to improve the code so that it allows a person to quickly and accurately. 
+Your exercise is to improve the code so that it allows a person to quickly and accurately annotate the images with the correct label. 
 
-You can keep the same input/output strategy that is already in the code. In the real-world, we would probably access the data and submit the results via an API. But here, it is ok to keep using the external `.js` file for input, and for the annotations to be appended to the bottom of page.
+You can keep the same input/output strategy that is already in the code. In the real-world, we would likely access the data and submit the annotation results via an API. But for this exercise, it is ok to keep using the external `.js` file for input, and for the annotations to be appended to the bottom of page.
 
 The solution should be in Javascript, but it is up to you how you structure the code and what framewords you want to use (jquery, react, angular, etc).
 
@@ -84,10 +84,10 @@ You may use any resources that are available to you on your machine or on the in
 
 ### Coding Exercise
 
-Reimplement the code so that it has a better strategy to quickly annotate images. Your strategy can present the images in any order, individually or with multiple at a time. You can use any type of button, image selection, or other strategy to make the annotations. You should consider the following general principles, that will sometimes be competing factors in your design:
+Reimplement the code so that it has a better strategy to quickly annotate images. Your strategy can present the images in any order, individually or multiple at a time. You can use any type of button, image selection, or other strategy to make the annotations. You should consider the following general principles in your design, which will sometimes be competing factors:
  1. It is faster to provide a yes/no response than to select from a large list of labels.
- 1. It is faster to have the same task repeatedly. Eg: 100 "is this basketball" questions in a row, rather than mixing up questions about many different sports in a row.
- 1. If people are selecting the same response over and over again, they are more likely to get bored and make errors.
+ 1. It is faster to have the same task repeatedly. For example, it is faster to ask someone "is this basketball" 200 times in a row, rather than mixing up 200 different questions about different sports.
+ 1. If people are selecting the same response over and over again, they are more likely to stop paying full attention and make errors.
 
 For this 2-hour exercise, you do _not_ need to worry about giving the same task to multiple people to ensure agreeement, or other strategies to detect errors. You only need to worry about the UX and Human-Computer Interaction (HCI) components of a single annotator interacting with the AI output. 
 
@@ -95,14 +95,13 @@ Aim to have working code. It's likely that you won't have time to implement ever
 
 ### Writing Exercise
 
-For the writing exercsie, pretend like you are addressing the customer about what you have implemented and what you are proposing to build. You can keep the style casual: assume it's a professional email sent to their technical team, not a formal proposal for their executives.
+For the writing exercise, pretend like you are addressing the customer about what you have implemented and what you are proposing to build. You can keep the style casual: assume it's a professional email sent to their technical team, not a formal proposal for their executives.
 
 First, write a 1-paragraph description of what you implemented in the coding exercise, justifying each decision. There are many possible solutions that can be implemented in about 60 minutes, so this is more about your reasoning than your exact strategy.
 
 Second, please write a few paragraphs or bullet points proposing other annotation strategies that you might with the customer, covering: 
- 1. What additional user interfaces strategies could you build to add more labels efficiently and accurately? 
- 1. Would you consider different interfaces for different devices (eg: PC vs Tablet)?
- 1. If you used the annotations to retrain the TensorFlow model, what might be the pros and cons of retraining TensorFlow on the newly labeled images very frequently vs training only a few times or even just once?
+ 1. What additional user interfaces strategies could you build to annotate more labels efficiently and accurately? 
+ 1. If you used the new annotations to retrain the TensorFlow model, what might be the pros and cons of retraining TensorFlow on the newly labeled images very frequently vs training only a few times or even just once?
  1. How would you evaluate the effectiveness of your strategies to see what worked best?
 
 ### Submitting the 2 Hour Exercise
@@ -116,7 +115,7 @@ A (250MB) subset of the images is available at:
 
 http://www.robertmunro.com/research/test_images.tar 
 
-The company made starter code that is in this same directory at:
+The company made starter code that should run in your browser, in this directory at:
 
 `annotate_photos.html`
 
